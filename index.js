@@ -1,15 +1,24 @@
-
-
+const Blockchain = require('./lib/Blockchain');
 
 module.exports = {
-    startDB:function(folder){
-        var fpds = require("./lib/FolderPersistentPDS");
-        return fpds.newPDS(folder);
+    startDB: function (folder) {
+        if ($$.blockchain) {
+            throw new Error('$$.blockchain is already defined');
+        }
+
+        require('./lib/domain');
+
+        const fpds = require("./lib/FolderPersistentPDS");
+        const pds = fpds.newPDS(folder);
+
+        $$.blockchain = new Blockchain(pds);
+
+        return pds;
     },
-    parseDomainUrl:function(domainUrl){
+    parseDomainUrl: function (domainUrl) {
 
     },
-    getDomainInfo:function(){
+    getDomainInfo: function () {
 
     }
-}
+};
