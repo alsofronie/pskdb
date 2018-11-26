@@ -7,6 +7,7 @@ module.exports = {
         }
 
         require('./lib/domain');
+        require('./lib/swarms');
 
         const fpds = require("./lib/FolderPersistentPDS");
         const pds = fpds.newPDS(folder);
