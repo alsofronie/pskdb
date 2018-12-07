@@ -21,5 +21,13 @@ module.exports = {
     },
     getDomainInfo: function () {
 
+    },
+    startInMemoryDB: function() {
+		require('./lib/domain');
+		require('./lib/swarms');
+
+		const pds = require('./lib/InMemoryPDS');
+
+		return new Blockchain(pds.newPDS(null));
     }
 };
