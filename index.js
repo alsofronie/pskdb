@@ -29,5 +29,14 @@ module.exports = {
 		const pds = require('./lib/InMemoryPDS');
 
 		return new Blockchain(pds.newPDS(null));
+    },
+    startCsbDb: function(readerWriter) {
+        require('./lib/domain');
+        require('./lib/swarms');
+
+        const csbPds = require("./lib/CsbPersistentPDS");
+        const pds = csbPds.newPDS(readerWriter);
+
+        return new Blockchain(pds);
     }
 };
