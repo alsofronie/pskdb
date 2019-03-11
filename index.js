@@ -5,16 +5,17 @@ module.exports = {
         if ($$.blockchain) {
             throw new Error('$$.blockchain is already defined');
         }
-
+        $$.blockchain = this.createDBHandler(folder);
+        return $$.blockchain;
+    },
+    createDBHandler: function(folder){
         require('./lib/domain');
         require('./lib/swarms');
 
         const fpds = require("./lib/FolderPersistentPDS");
-        const pds = fpds.newPDS(folder);
+        let pds = fpds.newPDS(folder);
 
-        $$.blockchain = new Blockchain(pds);
-
-        return pds;
+        return $$.blockchain = new Blockchain(pds);
     },
     parseDomainUrl: function (domainUrl) {
 
