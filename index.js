@@ -15,7 +15,7 @@ module.exports = {
         const fpds = require("./lib/FolderPersistentPDS");
         let pds = fpds.newPDS(folder);
 
-        return $$.blockchain = new Blockchain(pds);
+        return new Blockchain(pds);
     },
     parseDomainUrl: function (domainUrl) {
 
