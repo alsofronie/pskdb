@@ -13,15 +13,15 @@ module.exports = {
         require('./lib/swarms');
 
         const fpds = require("./lib/FolderPersistentPDS");
-        let pds = fpds.newPDS(folder);
+        const pds = fpds.newPDS(folder);
 
         return new Blockchain(pds);
     },
     parseDomainUrl: function (domainUrl) {
-
+        console.log("Empty function");
     },
     getDomainInfo: function () {
-
+        console.log("Empty function");
     },
     startInMemoryDB: function() {
 		require('./lib/domain');
